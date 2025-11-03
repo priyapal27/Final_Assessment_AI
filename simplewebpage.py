@@ -39,6 +39,7 @@ HTML_PAGE = """
 </head>
 <body>
     <h1>Priya Pal</h1>
+    <h2>Student at CDAC Noida</h2>
     <p>This is a simple static webpage served by Flask and Docker.</p>
     <button onclick="alert('Hello World from Priya !')">Click Me</button>
 </body>
