@@ -25,7 +25,7 @@ pipeline {
             steps {
                 echo 'Building Docker image...'
                 sh """
-                    docker build -t ${DOCKERHUB_USER}/${IMAGE_NAME}:latest .
+                    docker build -t priyapal345/final_assessment:latest .
                 """
             }
         }
@@ -34,7 +34,7 @@ pipeline {
             steps {
                 echo 'Logging into Docker Hub...'
                 sh """
-                    echo "${DOCKERHUB_CREDENTIALS_PSW}" | docker login -u "${DOCKERHUB_CREDENTIALS_USR}" --password-stdin
+                    echo "Priya@doc" | docker login -u "priyapal345" --password-stdin
                 """
             }
         }
@@ -43,7 +43,7 @@ pipeline {
             steps {
                 echo 'Pushing image to Docker Hub...'
                 sh """
-                    docker push ${DOCKERHUB_USER}/${IMAGE_NAME}:latest
+                    docker push priyapal345/final_assessment:latest
                 """
             }
         }
@@ -52,8 +52,8 @@ pipeline {
             steps {
                 echo 'Deploying container...'
                 sh """
-                    docker rm -f ${CONTAINER_NAME} || true
-                    docker run -d -p ${APP_PORT}:5000 --name ${CONTAINER_NAME} ${DOCKERHUB_USER}/${IMAGE_NAME}:latest
+                    docker rm -f interesting_wozniak || true
+                    docker run -d -p 5000:5000 --name interesting_wozniak priyapal345/final_assessment:latest
                 """
             }
         }
